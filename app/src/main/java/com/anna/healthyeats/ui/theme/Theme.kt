@@ -53,7 +53,7 @@ fun HealthyEatsTheme(
 //      if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
     }
 
-//    darkTheme -> DarkColorScheme
+//    darkTheme -> DarkColorScheme  --Dark theme support to be added later
     else -> LightColorScheme
   }
   val view = LocalView.current
