@@ -59,6 +59,7 @@ fun HealthyEatsTheme(
   MaterialTheme(
     colorScheme = colorScheme,
     typography = Typography,
+    shapes = shapes,
     content = content
   )
 }
