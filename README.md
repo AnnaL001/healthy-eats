@@ -5,6 +5,7 @@ Android Development practices that are used include:
 - Jetpack Compose
 - MVVM architecture
 - Repository pattern
+- ViewModel pattern
 - Dependency injection with Hilt.
 
 ```
