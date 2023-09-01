@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Healthy Eats</string>
+    <string name="error_icon">Error icon</string>
+    <string name="email_icon">Email icon</string>
+    <string name="name_placeholder">Your name</string>
+    <string name="name_required_error">Name is required</string>
+    <string name="email_placeholder">Your email address</string>
+    <string name="email_required_error">Email is required</string>
 </resources>
