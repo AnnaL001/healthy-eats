@@ -12,13 +12,11 @@ import androidx.compose.ui.unit.sp
 import com.anna.healthyeats.R
 
 @Composable
-fun ErrorTrailingIcon(isError: Boolean){
-  if (isError){
-    Icon(
-      painter = painterResource(id = R.drawable.error_icon),
-      contentDescription = stringResource(id = R.string.error_icon)
-    )
-  }
+fun ErrorTrailingIcon(){
+  Icon(
+    painter = painterResource(id = R.drawable.error_icon),
+    contentDescription = stringResource(id = R.string.error_icon)
+  )
 }
 
 @Composable
