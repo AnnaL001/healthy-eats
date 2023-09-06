@@ -48,7 +48,7 @@ fun HealthyEatsEmptyEmailFieldPreview(){
     Column {
       HealthyEatsEmailField(
         input = input,
-        placeholder = "Enter email",
+        placeholder = stringResource(id = R.string.email_placeholder),
         onInputChange = {
           input = it
         },

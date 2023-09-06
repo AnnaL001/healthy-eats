@@ -2,10 +2,7 @@ package com.anna.healthyeats.ui.components.forms.email
 
 import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Email
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -14,9 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
-import com.anna.healthyeats.R
+import com.anna.healthyeats.ui.components.forms.common.EmailLeadingIcon
 import com.anna.healthyeats.ui.components.forms.common.ErrorTrailingIcon
 import com.anna.healthyeats.ui.components.forms.common.KeyOptions
 import com.anna.healthyeats.ui.components.forms.common.getKeyboard
@@ -31,7 +27,7 @@ fun HealthyEatsEmailField(
   modifier: Modifier,
   isError: Boolean?= false,
   errorMessage: String?= "",
-  onDone: (KeyboardActionScope.() -> Unit)?= null,
+  onDone: (KeyboardActionScope.() -> Unit)?= null
 ){
   val keyboardController = LocalSoftwareKeyboardController.current
 
@@ -43,8 +39,10 @@ fun HealthyEatsEmailField(
     textStyle = MaterialTheme.typography.bodyMedium,
     isError = isError as Boolean,
     placeholder = { Text(text = placeholder) },
-    leadingIcon = { Icon(Icons.Rounded.Email, contentDescription = stringResource(id = R.string.email_icon)) },
-    trailingIcon = { ErrorTrailingIcon(isError = isError) },
+    leadingIcon = { EmailLeadingIcon() },
+    trailingIcon = {
+        if(isError) ErrorTrailingIcon()
+    },
     colors = TextFieldDefaults.outlinedTextFieldColors(
       focusedBorderColor = MaterialTheme.colorScheme.primary,
       focusedLabelColor = MaterialTheme.colorScheme.primary,
