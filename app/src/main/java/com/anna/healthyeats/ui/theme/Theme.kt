@@ -27,7 +27,8 @@ private val LightColorScheme = lightColorScheme(
   onSurface = HealthyFoodBlack,
   background = HealthyFoodsWhite,
   onPrimary = HealthyFoodsWhite,
-  onSecondary = HealthyFoodBlack
+  onSecondary = HealthyFoodBlack,
+  error = HealthyFoodsError
 )
 
 @Composable
