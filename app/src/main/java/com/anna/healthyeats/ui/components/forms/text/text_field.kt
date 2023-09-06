@@ -38,7 +38,7 @@ fun HealthyEatsTextField(
     textStyle = MaterialTheme.typography.bodyMedium,
     isError = isError as Boolean,
     placeholder = { Text(text = placeholder) },
-    trailingIcon = { ErrorTrailingIcon(isError = isError) },
+    trailingIcon = { if(isError) ErrorTrailingIcon() },
     colors = TextFieldDefaults.outlinedTextFieldColors(
       focusedBorderColor = MaterialTheme.colorScheme.primary,
       focusedLabelColor = MaterialTheme.colorScheme.primary,
