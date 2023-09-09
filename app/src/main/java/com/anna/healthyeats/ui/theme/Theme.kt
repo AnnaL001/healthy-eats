@@ -16,19 +16,18 @@ import androidx.core.view.WindowCompat
 //private val DarkColorScheme = darkColorScheme(
 //  primary = HealthyFoodsGreen,
 //  secondary = HealthyFoodsYellow,
-//  tertiary = Pink80,
 //  background = Color.Black
 //) -- Dark theme support to be added later
 
-private val LightColorScheme = lightColorScheme(
-  primary = HealthyFoodsGreen,
-  secondary = HealthyFoodsYellow,
-  surface = HealthyFoodsWhite,
-  onSurface = HealthyFoodBlack,
-  background = HealthyFoodsWhite,
-  onPrimary = HealthyFoodsWhite,
-  onSecondary = HealthyFoodBlack,
-  error = HealthyFoodsError
+val LightColorScheme = lightColorScheme(
+  primary = HealthyEatsGreen,
+  secondary = HealthyEatsYellow,
+  surface = HealthyEatsWhite,
+  onSurface = HealthyEatsBlack,
+  background = HealthyEatsWhite,
+  onPrimary = HealthyEatsWhite,
+  onSecondary = HealthyEatsBlack,
+  error = HealthyEatsError
 )
 
 @Composable
@@ -42,10 +41,10 @@ fun HealthyEatsTheme(
     dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
       val context = LocalContext.current
       dynamicLightColorScheme(context)
-//      if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+//      if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context) -- Dark theme support to be added later
     }
 
-//    darkTheme -> DarkColorScheme  --Dark theme support to be added later
+//    darkTheme -> DarkColorScheme -- Dark theme support to be added later
     else -> LightColorScheme
   }
   val view = LocalView.current
@@ -53,7 +52,7 @@ fun HealthyEatsTheme(
     SideEffect {
       val window = (view.context as Activity).window
       window.statusBarColor = colorScheme.background.toArgb()
-      WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
+      WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
     }
   }
 
