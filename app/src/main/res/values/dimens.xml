@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Screen dimensions -->
+    <dimen name="screen_small_padding">8dp</dimen>
+    <dimen name="screen_medium_padding">16dp</dimen>
+
+    <!-- Button dimensions -->
+    <dimen name="button_icon_size">22dp</dimen>
+    <dimen name="button_icon_spacing">28dp</dimen>
+    <dimen name="button_size">50dp</dimen>
+</resources>
