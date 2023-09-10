@@ -11,6 +11,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import com.anna.healthyeats.R
 
+/**
+ * Error icon to be displayed when form validation fails
+ */
 @Composable
 fun ErrorTrailingIcon(){
   Icon(
@@ -19,14 +22,17 @@ fun ErrorTrailingIcon(){
   )
 }
 
+/**
+ * Error text to be displayed when form validation fails
+ * @param modifier Modifier instance to add styling
+ * @param errorMessage Error message to be displayed
+ */
 @Composable
 fun HealthyEatsFieldError(modifier: Modifier, errorMessage: String){
-  if (errorMessage.isNotBlank()) {
-    Text(
-      text = errorMessage,
-      color = MaterialTheme.colorScheme.error,
-      style = MaterialTheme.typography.labelSmall.copy(fontSize = 12.sp),
-      modifier = modifier.fillMaxWidth()
-    )
-  }
+  Text(
+    text = errorMessage,
+    color = MaterialTheme.colorScheme.error,
+    style = MaterialTheme.typography.labelSmall.copy(fontSize = 12.sp),
+    modifier = modifier.fillMaxWidth()
+  )
 }

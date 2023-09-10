@@ -45,6 +45,8 @@ fun HealthyEatsEmptyEmailFieldPreview(){
   var input by remember { mutableStateOf(TextFieldValue("")) }
 
   HealthyEatsTheme {
+    val errorMessage = stringResource(id = R.string.email_required_error)
+
     Column {
       HealthyEatsEmailField(
         input = input,
@@ -54,10 +56,10 @@ fun HealthyEatsEmptyEmailFieldPreview(){
         },
         modifier = Modifier.padding(16.dp),
         isError = true,
-        errorMessage = stringResource(id = R.string.email_placeholder)
+        errorMessage = errorMessage
       )
 
-      HealthyEatsFieldError(modifier = Modifier.padding(start = 16.dp), errorMessage = stringResource(id = R.string.email_required_error))
+      HealthyEatsFieldError(modifier = Modifier.padding(start = 16.dp), errorMessage = errorMessage)
     }
   }
 }
