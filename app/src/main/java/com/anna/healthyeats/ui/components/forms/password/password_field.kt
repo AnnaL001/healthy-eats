@@ -7,7 +7,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -23,10 +22,20 @@ import com.anna.healthyeats.ui.components.forms.common.ErrorTrailingIcon
 import com.anna.healthyeats.ui.components.forms.common.KeyOptions
 import com.anna.healthyeats.ui.components.forms.common.PasswordLeadingIcon
 import com.anna.healthyeats.ui.components.forms.common.PasswordTrailingIcon
+import com.anna.healthyeats.ui.components.forms.common.fieldColorScheme
 import com.anna.healthyeats.ui.components.forms.common.getKeyboard
 import com.anna.healthyeats.ui.components.forms.common.healthyEatsField
 
-
+/**
+ * Password field
+ * @param input Field value
+ * @param placeholder Text to be displayed when no value is present
+ * @param onInputChange Function/Method to run when the field value changes
+ * @param modifier Modifier instance to add styling
+ * @param isError Whether field validation has failed
+ * @param errorMessage Error message to be displayed
+ * @param onDone Function/method to run when field value has been input
+ */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun HealthyEatsPasswordField(
@@ -59,14 +68,7 @@ fun HealthyEatsPasswordField(
         ErrorTrailingIcon()
       }
     },
-    colors = TextFieldDefaults.outlinedTextFieldColors(
-      focusedBorderColor = MaterialTheme.colorScheme.primary,
-      focusedLabelColor = MaterialTheme.colorScheme.primary,
-      errorBorderColor = MaterialTheme.colorScheme.error,
-      errorLabelColor = MaterialTheme.colorScheme.error,
-      errorLeadingIconColor = MaterialTheme.colorScheme.error,
-      errorTrailingIconColor = MaterialTheme.colorScheme.error
-    ),
+    colors = fieldColorScheme(),
     keyboardOptions = getKeyboard(KeyOptions.PASSWORD_INPUT),
     keyboardActions = KeyboardActions(
       onDone = {
