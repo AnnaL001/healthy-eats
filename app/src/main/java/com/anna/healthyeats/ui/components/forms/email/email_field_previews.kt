@@ -8,10 +8,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.anna.healthyeats.R
 import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.components.forms.text.HealthyEatsTextField
@@ -33,7 +33,7 @@ fun HealthyEatsFilledEmailFieldPreview(){
         onInputChange = {
           input = it
         },
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding))
       )
     }
   }
@@ -54,12 +54,12 @@ fun HealthyEatsEmptyEmailFieldPreview(){
         onInputChange = {
           input = it
         },
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
         isError = true,
         errorMessage = errorMessage
       )
 
-      HealthyEatsFieldError(modifier = Modifier.padding(start = 16.dp), errorMessage = errorMessage)
+      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_medium_padding)), errorMessage = errorMessage)
     }
   }
 }

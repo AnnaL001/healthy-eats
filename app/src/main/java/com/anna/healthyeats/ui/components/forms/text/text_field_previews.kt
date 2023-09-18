@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +33,7 @@ fun HealthyEatsFilledTextFieldPreview(){
         onInputChange = {
           input = it
         },
-        modifier = Modifier.padding(16.dp)
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding))
       )
     }
   }
@@ -51,7 +52,7 @@ fun HealthyEatsEmptyTextFieldPreview(){
         onInputChange = {
           input = it
         },
-        modifier = Modifier.padding(16.dp),
+        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
         isError = true,
         errorMessage = stringResource(id = R.string.name_required_error)
       )
