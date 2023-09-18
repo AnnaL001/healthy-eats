@@ -40,7 +40,7 @@ fun HealthyEatsFilledPasswordFieldPreview(){
 
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "empty")
-fun HealthyEatsEmptyEmailFieldPreview(){
+fun HealthyEatsEmptyPasswordFieldPreview(){
   var input by remember { mutableStateOf(TextFieldValue("")) }
 
   HealthyEatsTheme {
