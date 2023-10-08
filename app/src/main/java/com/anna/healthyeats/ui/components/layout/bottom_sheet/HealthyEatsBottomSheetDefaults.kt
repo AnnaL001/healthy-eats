@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.components.layout
+package com.anna.healthyeats.ui.components.layout.bottom_sheet
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp

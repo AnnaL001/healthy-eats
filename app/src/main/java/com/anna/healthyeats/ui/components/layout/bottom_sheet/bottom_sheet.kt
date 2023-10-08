@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.components.layout
+package com.anna.healthyeats.ui.components.layout.bottom_sheet
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
