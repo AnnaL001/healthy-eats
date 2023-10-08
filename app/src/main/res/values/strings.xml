@@ -8,6 +8,7 @@
     <string name="hide_password">Hide password</string>
     <string name="search_list_icon">Search list icon</string>
     <string name="search_icon">Search icon</string>
+    <string name="bookmark_icon">Bookmark icon</string>
 
     <!-- Field placeholders -->
     <string name="name_placeholder">Your name</string>

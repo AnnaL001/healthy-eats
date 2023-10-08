@@ -32,7 +32,7 @@ fun AppButtonWithIcon(){
         buttonText = "Click me!",
         modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
         icon = R.drawable.bookmark_add,
-        contentDesc = stringResource(id = R.string.show_password)
+        contentDesc = stringResource(id = R.string.bookmark_icon)
       )
     }
   }

@@ -3,8 +3,9 @@ package com.anna.healthyeats.ui.components.forms.search
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.SearchBarColors
+import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -12,6 +13,7 @@ import androidx.compose.ui.res.stringResource
 import com.anna.healthyeats.R
 import com.anna.healthyeats.ui.theme.HealthyEatsBlack
 import com.anna.healthyeats.ui.theme.HealthyEatsBlack2
+import com.anna.healthyeats.ui.theme.HealthyEatsGray
 import com.anna.healthyeats.ui.theme.HealthyEatsGray2
 import com.anna.healthyeats.ui.theme.HealthyEatsGreen
 
@@ -31,18 +33,34 @@ fun Modifier.healthyEatsSearch(modifier: Modifier): Modifier{
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun searchColorScheme(): TextFieldColors{
-  return TextFieldDefaults.outlinedTextFieldColors(
-    textColor = HealthyEatsBlack, // TO DO: Fix material colorscheme referencing default colors
-    containerColor = HealthyEatsGray2,
-    focusedBorderColor = HealthyEatsGreen,
-    focusedLabelColor = HealthyEatsGreen,
+fun searchColorScheme(): SearchBarColors {
+  return SearchBarDefaults.colors(
+    containerColor = HealthyEatsGray2, // TO DO: Fix material colorscheme referencing default colors
+    dividerColor = HealthyEatsBlack,
+    inputFieldColors = searchInputColorScheme()
+  )
+}
+
+/**
+ * Add search bar's input field color scheme
+ * @return Search bar's input field color scheme
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun searchInputColorScheme(): TextFieldColors {
+  return SearchBarDefaults.inputFieldColors(
+    focusedTextColor = HealthyEatsBlack, // TO DO: Fix material colorscheme referencing default colors
+    unfocusedTextColor = HealthyEatsBlack2,
     focusedLeadingIconColor = HealthyEatsGreen,
     focusedTrailingIconColor = HealthyEatsGreen,
-    placeholderColor = HealthyEatsBlack2,
+    focusedPlaceholderColor = HealthyEatsBlack2,
+    cursorColor = HealthyEatsGreen,
     unfocusedLeadingIconColor = HealthyEatsBlack2,
     unfocusedTrailingIconColor = HealthyEatsBlack2,
-    unfocusedBorderColor = HealthyEatsGray2
+    unfocusedPlaceholderColor = HealthyEatsBlack2,
+    disabledLeadingIconColor = HealthyEatsGray,
+    disabledPlaceholderColor = HealthyEatsGray,
+    disabledTrailingIconColor = HealthyEatsGray
   )
 }
 
