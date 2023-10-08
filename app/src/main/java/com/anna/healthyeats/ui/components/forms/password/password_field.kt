@@ -2,7 +2,6 @@ package com.anna.healthyeats.ui.components.forms.password
 
 import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -36,7 +35,7 @@ import com.anna.healthyeats.ui.components.forms.common.healthyEatsField
  * @param errorMessage Error message to be displayed
  * @param onDone Function/method to run when field value has been input
  */
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HealthyEatsPasswordField(
   input: TextFieldValue,
