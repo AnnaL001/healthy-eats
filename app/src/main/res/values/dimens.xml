@@ -8,4 +8,7 @@
     <dimen name="button_icon_size">22dp</dimen>
     <dimen name="button_icon_spacing">28dp</dimen>
     <dimen name="button_size">50dp</dimen>
+
+    <!-- Bottom sheet dimensions -->
+    <dimen name="default_sheet_peek_height">512dp</dimen>
 </resources>
