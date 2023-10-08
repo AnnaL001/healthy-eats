@@ -7,8 +7,8 @@ import androidx.compose.material.icons.rounded.Lock
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -25,13 +25,13 @@ import com.anna.healthyeats.ui.theme.HealthyEatsGreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun fieldColorScheme(): TextFieldColors{
-  return TextFieldDefaults.outlinedTextFieldColors(
+  return OutlinedTextFieldDefaults.colors(
     focusedBorderColor = HealthyEatsGreen, // TO DO: Fix material colorscheme referencing default colors
-    focusedLabelColor = HealthyEatsGreen,
     errorBorderColor = MaterialTheme.colorScheme.error,
-    errorLabelColor = MaterialTheme.colorScheme.error,
     errorLeadingIconColor = MaterialTheme.colorScheme.error,
-    errorTrailingIconColor = MaterialTheme.colorScheme.error
+    errorTrailingIconColor = MaterialTheme.colorScheme.error,
+    focusedLabelColor = HealthyEatsGreen,
+    errorLabelColor = MaterialTheme.colorScheme.error,
   )
 }
 
