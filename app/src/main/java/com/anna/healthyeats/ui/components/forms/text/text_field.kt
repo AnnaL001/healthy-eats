@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.ui.text.input.TextFieldValue
 import com.anna.healthyeats.ui.components.forms.common.ErrorTrailingIcon
 import com.anna.healthyeats.ui.components.forms.common.KeyOptions
 import com.anna.healthyeats.ui.components.forms.common.fieldColorScheme
@@ -29,9 +28,9 @@ import com.anna.healthyeats.ui.components.forms.common.healthyEatsField
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HealthyEatsTextField(
-  input: TextFieldValue,
+  input: String,
   placeholder: String,
-  onInputChange: (TextFieldValue) -> Unit,
+  onInputChange: (String) -> Unit,
   modifier: Modifier,
   isError: Boolean?= false,
   errorMessage: String?= "",
