@@ -10,7 +10,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.anna.healthyeats.R
 import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
@@ -22,7 +21,7 @@ import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "filled")
 fun HealthyEatsFilledPasswordFieldPreview(){
-  var input by remember { mutableStateOf(TextFieldValue("12345678")) }
+  var input by remember { mutableStateOf("12345678") }
 
   HealthyEatsTheme {
     Column {
@@ -41,7 +40,7 @@ fun HealthyEatsFilledPasswordFieldPreview(){
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "empty")
 fun HealthyEatsEmptyPasswordFieldPreview(){
-  var input by remember { mutableStateOf(TextFieldValue("")) }
+  var input by remember { mutableStateOf("") }
 
   HealthyEatsTheme {
     Column {
