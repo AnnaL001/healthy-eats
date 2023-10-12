@@ -10,11 +10,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import com.anna.healthyeats.R
 import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
-import com.anna.healthyeats.ui.components.forms.text.HealthyEatsTextField
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 
 /**====================================================================
@@ -23,11 +21,11 @@ import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "filled")
 fun HealthyEatsFilledEmailFieldPreview(){
-  var input by remember { mutableStateOf(TextFieldValue("anna@gmail.com")) }
+  var input by remember { mutableStateOf("") }
 
   HealthyEatsTheme {
     Column {
-      HealthyEatsTextField(
+      HealthyEatsEmailField(
         input = input,
         placeholder = stringResource(id = R.string.email_placeholder),
         onInputChange = {
@@ -42,7 +40,7 @@ fun HealthyEatsFilledEmailFieldPreview(){
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "empty")
 fun HealthyEatsEmptyEmailFieldPreview(){
-  var input by remember { mutableStateOf(TextFieldValue("")) }
+  var input by remember { mutableStateOf("") }
 
   HealthyEatsTheme {
     val errorMessage = stringResource(id = R.string.email_required_error)
