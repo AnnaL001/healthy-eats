@@ -29,14 +29,5 @@ fun getKeyboard(keyOptions: KeyOptions): KeyboardOptions {
   )
 }
 
-/**
- * Get keyboard type & imeAction to be used for search
- */
-fun getSearchKeyboard(): KeyboardOptions {
-  return KeyboardOptions(
-    keyboardType = KeyboardType.Text,
-    imeAction = ImeAction.Search
-  )
-}
 
 
