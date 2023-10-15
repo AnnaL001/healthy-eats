@@ -33,7 +33,12 @@
     <string name="signup_subtitle">Create an account to continue</string>
     <string name="login_redirect_link">Already have an account? Login here</string>
 
+    <!-- Start screen -->
+    <string name="title">HealthyEats</string>
+    <string name="subtitle">Your healthy lifestyle partner where your healthy recipe needs are taken care of</string>
+
     <!-- Buttons -->
     <string name="btn_login">Login</string>
     <string name="btn_signup">Sign up</string>
+    <string name="btn_start">Get started</string>
 </resources>
