@@ -1,6 +1,8 @@
 package com.anna.healthyeats.ui.components.layout.bottom_sheet
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,7 +26,9 @@ fun HealthyEatsBottomSheetPreview(){
       scaffoldState = scaffoldState,
       sheetContent = { BottomSheetContent() }
     ){
-      Text(text = "Image content")
+      Box(modifier = Modifier.fillMaxSize()){
+        Text(text = "Image content")
+      }
     }
   }
 }

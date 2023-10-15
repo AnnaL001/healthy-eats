@@ -5,7 +5,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
 import com.anna.healthyeats.R
-import com.anna.healthyeats.ui.theme.HealthyEatsGray2
+import com.anna.healthyeats.ui.theme.HealthyEatsGray3
 import com.anna.healthyeats.ui.theme.HealthyEatsGreen
 import com.anna.healthyeats.ui.theme.HealthyEatsWhite
 
@@ -25,7 +25,7 @@ fun HealthyEatsBottomSheetDragHandle(){
 @Composable
 fun bottomSheetDefaults(): HealthyEatsBottomSheetDefaults {
   return HealthyEatsBottomSheetDefaults(
-    containerColor = HealthyEatsGray2,
+    containerColor = HealthyEatsGray3,
     sheetContainerColor = HealthyEatsWhite,
     sheetPeekHeight = dimensionResource(id = R.dimen.default_sheet_peek_height))
 }

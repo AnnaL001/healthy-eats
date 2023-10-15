@@ -1,12 +1,10 @@
-package com.anna.healthyeats.ui.components.forms.email
+package com.anna.healthyeats.ui.components.forms.password
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
@@ -16,21 +14,18 @@ import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 
 /**====================================================================
- * Email field previews
+ * Password field previews
  * ===================================================================*/
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "filled")
-fun HealthyEatsFilledEmailFieldPreview(){
-  var input by remember { mutableStateOf("") }
+fun HealthyEatsFilledPasswordFieldPreview(){
+  val input = remember { mutableStateOf("12345678") }
 
   HealthyEatsTheme {
     Column {
-      HealthyEatsEmailField(
-        input = input,
-        placeholder = stringResource(id = R.string.email_placeholder),
-        onInputChange = {
-          input = it
-        },
+      HealthyEatsPasswordField(
+        inputState = input,
+        placeholder = stringResource(id = R.string.password_placeholder),
         modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding))
       )
     }
@@ -39,25 +34,20 @@ fun HealthyEatsFilledEmailFieldPreview(){
 
 @Composable
 @Preview(showBackground = true, showSystemUi = true, group = "empty")
-fun HealthyEatsEmptyEmailFieldPreview(){
-  var input by remember { mutableStateOf("") }
+fun HealthyEatsEmptyPasswordFieldPreview(){
+  val input = remember { mutableStateOf("") }
 
   HealthyEatsTheme {
-    val errorMessage = stringResource(id = R.string.email_required_error)
-
     Column {
-      HealthyEatsEmailField(
-        input = input,
-        placeholder = stringResource(id = R.string.email_placeholder),
-        onInputChange = {
-          input = it
-        },
+      HealthyEatsPasswordField(
+        inputState = input,
+        placeholder = stringResource(id = R.string.password_placeholder),
         modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
         isError = true,
-        errorMessage = errorMessage
+        errorMessage = stringResource(id = R.string.password_placeholder)
       )
 
-      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_medium_padding)), errorMessage = errorMessage)
+      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_medium_padding)), errorMessage = stringResource(id = R.string.password_required_error))
     }
   }
 }

@@ -6,6 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -18,9 +19,8 @@ import com.anna.healthyeats.ui.components.forms.common.healthyEatsField
 
 /**
  * Email field
- * @param input Field value
+ * @param inputState Field state
  * @param placeholder Text to be displayed when no value is present
- * @param onInputChange Function/Method to run when the field value changes
  * @param modifier Modifier instance to add styling
  * @param isError Whether field validation has failed
  * @param errorMessage Error message to be displayed
@@ -29,9 +29,8 @@ import com.anna.healthyeats.ui.components.forms.common.healthyEatsField
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun HealthyEatsEmailField(
-  input: String,
+  inputState: MutableState<String>,
   placeholder: String,
-  onInputChange: (String) -> Unit,
   modifier: Modifier,
   isError: Boolean?= false,
   errorMessage: String?= "",
@@ -40,8 +39,10 @@ fun HealthyEatsEmailField(
   val keyboardController = LocalSoftwareKeyboardController.current
 
   OutlinedTextField(
-    value = input,
-    onValueChange = onInputChange,
+    value = inputState.value,
+    onValueChange = { newValue ->
+      inputState.value = newValue
+    },
     modifier = Modifier.healthyEatsField(isError, errorMessage, modifier),
     singleLine = true,
     textStyle = MaterialTheme.typography.bodyMedium,
