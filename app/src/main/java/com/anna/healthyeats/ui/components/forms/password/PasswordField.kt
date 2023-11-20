@@ -1,5 +1,7 @@
 package com.anna.healthyeats.ui.components.forms.password
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.IconButton
@@ -15,9 +17,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import com.anna.healthyeats.R
 import com.anna.healthyeats.ui.components.forms.common.ErrorTrailingIcon
+import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.components.forms.common.KeyOptions
 import com.anna.healthyeats.ui.components.forms.common.PasswordLeadingIcon
 import com.anna.healthyeats.ui.components.forms.common.PasswordTrailingIcon
@@ -40,44 +45,50 @@ fun HealthyEatsPasswordField(
   inputState: MutableState<String>,
   placeholder: String,
   modifier: Modifier,
-  isError: Boolean?= false,
-  errorMessage: String?= "",
+  isError: Boolean = false,
+  errorMessage: String = "",
   onDone: (KeyboardActionScope.() -> Unit)?= null,
 ){
   val keyboardController = LocalSoftwareKeyboardController.current
   var passwordHidden by rememberSaveable { mutableStateOf(true) }
 
-  OutlinedTextField(
-    value = inputState.value,
-    onValueChange = { newValue ->
-      inputState.value = newValue
-    },
-    modifier = Modifier.healthyEatsField(isError, errorMessage, modifier),
-    singleLine = true,
-    textStyle = MaterialTheme.typography.bodyMedium,
-    isError = isError as Boolean,
-    placeholder = { Text(text = placeholder) },
-    leadingIcon = { PasswordLeadingIcon() },
-    trailingIcon = {
-      if (!isError) {
-        IconButton(onClick = { passwordHidden = !passwordHidden }) {
-          PasswordTrailingIcon(passwordHidden = passwordHidden)
-        }
-      } else {
-        ErrorTrailingIcon()
-      }
-    },
-    colors = fieldColorScheme(),
-    keyboardOptions = getKeyboard(KeyOptions.PASSWORD_INPUT),
-    keyboardActions = KeyboardActions(
-      onDone = {
-        if(onDone is (KeyboardActionScope.() -> Unit)){
-          onDone.invoke(this)
+  Column {
+    OutlinedTextField(
+      value = inputState.value,
+      onValueChange = { newValue ->
+        inputState.value = newValue
+      },
+      modifier = Modifier.healthyEatsField(isError, errorMessage, modifier),
+      singleLine = true,
+      textStyle = MaterialTheme.typography.bodyMedium,
+      isError = isError,
+      placeholder = { Text(text = placeholder) },
+      leadingIcon = { PasswordLeadingIcon() },
+      trailingIcon = {
+        if (!isError) {
+          IconButton(onClick = { passwordHidden = !passwordHidden }) {
+            PasswordTrailingIcon(passwordHidden = passwordHidden)
+          }
         } else {
-          keyboardController?.hide()
+          ErrorTrailingIcon()
         }
-      }
-    ),
-    visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None
-  )
+      },
+      colors = fieldColorScheme(),
+      keyboardOptions = getKeyboard(KeyOptions.PASSWORD_INPUT),
+      keyboardActions = KeyboardActions(
+        onDone = {
+          if(onDone is (KeyboardActionScope.() -> Unit)){
+            onDone.invoke(this)
+          } else {
+            keyboardController?.hide()
+          }
+        }
+      ),
+      visualTransformation = if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None
+    )
+
+    if (isError && errorMessage.isNotBlank()){
+      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_xlarge_padding)), errorMessage = errorMessage)
+    }
+  }
 }

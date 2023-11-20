@@ -10,7 +10,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.anna.healthyeats.R
-import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 
 /**====================================================================
@@ -38,16 +37,12 @@ fun HealthyEatsEmptyPasswordFieldPreview(){
   val input = remember { mutableStateOf("") }
 
   HealthyEatsTheme {
-    Column {
-      HealthyEatsPasswordField(
-        inputState = input,
-        placeholder = stringResource(id = R.string.password_placeholder),
-        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
-        isError = true,
-        errorMessage = stringResource(id = R.string.password_placeholder)
-      )
-
-      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_medium_padding)), errorMessage = stringResource(id = R.string.password_required_error))
-    }
+    HealthyEatsPasswordField(
+      inputState = input,
+      placeholder = stringResource(id = R.string.password_placeholder),
+      modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
+      isError = true,
+      errorMessage = stringResource(id = R.string.password_required_error)
+    )
   }
 }
