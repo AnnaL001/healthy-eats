@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.screens.ui.auth.login
+package com.anna.healthyeats.ui.screens.ui.auth.login.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
@@ -18,7 +18,11 @@ fun LoginScreenPreview() {
 
   HealthyEatsTheme {
     Surface(modifier = Modifier.fillMaxSize()) {
-      LoginScreen(email, password, onClick)
+      LoginScreenUI(
+        email = email,
+        password = password,
+        onClick = onClick
+      )
     }
   }
 }

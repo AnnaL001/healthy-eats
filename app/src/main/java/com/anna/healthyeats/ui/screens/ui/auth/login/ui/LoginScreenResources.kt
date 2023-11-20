@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.screens.ui.auth.login
+package com.anna.healthyeats.ui.screens.ui.auth.login.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.dimensionResource
@@ -18,12 +18,16 @@ object LoginScreenResources {
     stringMap["password_placeholder"] = stringResource(id = R.string.password_placeholder)
     stringMap["btn_login"] = stringResource(id = R.string.btn_login)
     stringMap["signup_redirect_link"] = stringResource(id = R.string.sign_up_redirect_link)
+    stringMap["login_error"] = stringResource(id = R.string.login_error)
+    stringMap["verification_error"] = stringResource(id = R.string.verification_error)
+    stringMap["login_loading"] = stringResource(id = R.string.login_loading)
     return stringMap
   }
 
   @Composable
   fun dimenResources(): Map<String, Dp>{
     dimenMap["small_padding"] = dimensionResource(id = R.dimen.small_padding)
+    dimenMap["small_medium_padding"] = dimensionResource(id = R.dimen.small_medium_padding)
     dimenMap["medium_padding"] = dimensionResource(id = R.dimen.medium_padding)
     dimenMap["large_padding"] = dimensionResource(id = R.dimen.large_padding)
     dimenMap["screen_small_padding"] = dimensionResource(id = R.dimen.screen_small_padding)
