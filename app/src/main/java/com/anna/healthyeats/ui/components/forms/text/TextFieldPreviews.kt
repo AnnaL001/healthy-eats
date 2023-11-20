@@ -9,9 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.anna.healthyeats.R
-import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 
 /**====================================================================
@@ -39,16 +37,12 @@ fun HealthyEatsEmptyTextFieldPreview(){
   val input = remember { mutableStateOf("") }
 
   HealthyEatsTheme {
-    Column {
-      HealthyEatsTextField(
-        inputState = input,
-        placeholder = stringResource(id = R.string.name_placeholder),
-        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
-        isError = true,
-        errorMessage = stringResource(id = R.string.name_required_error)
-      )
-
-      HealthyEatsFieldError(modifier = Modifier.padding(start = 16.dp), errorMessage = stringResource(id = R.string.name_required_error))
-    }
+    HealthyEatsTextField(
+      inputState = input,
+      placeholder = stringResource(id = R.string.name_placeholder),
+      modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
+      isError = true,
+      errorMessage = stringResource(id = R.string.name_required_error)
+    )
   }
 }
