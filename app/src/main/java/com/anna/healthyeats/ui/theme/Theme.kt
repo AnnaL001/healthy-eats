@@ -52,7 +52,7 @@ fun HealthyEatsTheme(
     SideEffect {
       val window = (view.context as Activity).window
       window.statusBarColor = HealthyEatsWhite.toArgb() // TO DO: Fix material colorscheme referencing default colors
-      WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+      WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
     }
   }
 

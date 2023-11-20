@@ -3,45 +3,31 @@ package com.anna.healthyeats.ui.main
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import cafe.adriel.voyager.navigator.Navigator
+import com.anna.healthyeats.ui.screens.ui.start.StartScreen
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContent {
       HealthyEatsTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-          Greeting("Android")
-        }
+        Navigator(StartScreen())
       }
     }
   }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-  Text(
-    text = "Hello $name!",
-    modifier = modifier
-  )
 }
 
 @Preview(
   showBackground = true,
   showSystemUi = true)
 @Composable
-fun GreetingPreview() {Greeting("Android")
+fun MainActivityPreview() {
   HealthyEatsTheme {
-    Surface(modifier = Modifier.fillMaxSize()) {
-      Greeting("Android")
-    }
+    Navigator(StartScreen())
   }
 }
