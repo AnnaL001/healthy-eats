@@ -19,14 +19,14 @@ fun boldGreenStyling(): TextStyle {
 @Composable
 fun normalStyling(): TextStyle{
   return MaterialTheme.typography.titleMedium.copy(
-    color = HealthyEatsBlack
+    color = HealthyEatsBlack // TO DO: Check why material theme colors not working
   )
 }
 
 @Composable
 fun boldGreenTitleStyling(): TextStyle{
   return MaterialTheme.typography.headlineLarge.copy(
-    color = HealthyEatsGreen,
+    color = HealthyEatsGreen, // TO DO: Check why material theme colors not working
   )
 }
 
