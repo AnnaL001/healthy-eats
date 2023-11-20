@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.screens.ui.start
+package com.anna.healthyeats.ui.screens.ui.start.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
@@ -14,7 +14,7 @@ fun StartScreenPreview() {
 
   HealthyEatsTheme {
     Surface(modifier = Modifier.fillMaxSize()) {
-      StartScreen {
+      StartScreenUI {
         onClick()
       }
     }

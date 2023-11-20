@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.screens.ui.start
+package com.anna.healthyeats.ui.screens.ui.start.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
