@@ -19,16 +19,33 @@
 
     <!-- Error messages -->
     <string name="name_required_error">Name is required</string>
-    <string name="email_required_error">Email is required</string>
-    <string name="password_required_error">Password is required</string>
-    <string name="title_activity_login_fragment">LoginFragment</string>
 
-    <!-- Text content -->
+    <string name="email_required_error">Email is required</string>
+    <string name="email_invalid_error">Email should be a valid email address</string>
+    <string name="email_lowercase_error">Email should be in lowercase</string>
+
+    <string name="password_required_error">Password is required</string>
+    <string name="password_short_error">Password should have a minimum of 8 characters</string>
+    <string name="password_no_uppercase_error">Password should contain uppercase characters</string>
+    <string name="password_no_lowercase_error">Password should contain lowercase characters</string>
+    <string name="password_no_digit_error">Password should contain digits</string>
+    <string name="password_no_special_chars_error">Password should contain special characters</string>
+
+    <string name="confirm_password_required_error">Confirm password is required</string>
+    <string name="confirm_password_match_error">Confirm password should match password</string>
+
+    <string name="sign_up_error">😔️ Oops! An error occurred during signup</string>
+    <string name="login_error">😔️ Oops! An error occurred during login</string>
+    <string name="verification_error">Kindly verify your email before proceeding</string>
+
+    <!-- Screen Text content -->
     <!-- Auth -->
+    <!-- Login screen -->
     <string name="login_title">Login to your account</string>
     <string name="login_subtitle">Kindly enter your details below to login into your account</string>
     <string name="sign_up_redirect_link">Don\'t have an account? Sign up here</string>
 
+    <!-- Sign up screen -->
     <string name="signup_title">Getting started</string>
     <string name="signup_subtitle">Create an account to continue</string>
     <string name="login_redirect_link">Already have an account? Login here</string>
@@ -41,4 +58,9 @@
     <string name="btn_login">Login</string>
     <string name="btn_signup">Sign up</string>
     <string name="btn_start">Get started</string>
+
+    <!-- Loading texts -->
+    <string name="sign_up_loading">Signing you up…</string>
+    <string name="login_loading">Login in progress…</string>
+
 </resources>
