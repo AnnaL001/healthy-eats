@@ -10,7 +10,6 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.anna.healthyeats.R
-import com.anna.healthyeats.ui.components.forms.common.HealthyEatsFieldError
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 
 /**====================================================================
@@ -40,16 +39,12 @@ fun HealthyEatsEmptyEmailFieldPreview(){
   HealthyEatsTheme {
     val errorMessage = stringResource(id = R.string.email_required_error)
 
-    Column {
-      HealthyEatsEmailField(
-        inputState = input,
-        placeholder = stringResource(id = R.string.email_placeholder),
-        modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
-        isError = true,
-        errorMessage = errorMessage
-      )
-
-      HealthyEatsFieldError(modifier = Modifier.padding(start = dimensionResource(id = R.dimen.screen_medium_padding)), errorMessage = errorMessage)
-    }
+    HealthyEatsEmailField(
+      inputState = input,
+      placeholder = stringResource(id = R.string.email_placeholder),
+      modifier = Modifier.padding(dimensionResource(id = R.dimen.screen_medium_padding)),
+      isError = true,
+      errorMessage = errorMessage
+    )
   }
 }
