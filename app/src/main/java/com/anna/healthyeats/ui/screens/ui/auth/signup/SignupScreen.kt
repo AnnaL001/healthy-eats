@@ -1,130 +1,109 @@
 package com.anna.healthyeats.ui.screens.ui.auth.signup
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
-import com.anna.healthyeats.R
-import com.anna.healthyeats.ui.components.forms.button.HealthyEatsButton
-import com.anna.healthyeats.ui.components.forms.email.HealthyEatsEmailField
-import com.anna.healthyeats.ui.components.forms.password.HealthyEatsPasswordField
-import com.anna.healthyeats.ui.components.layout.bottom_sheet.HealthyEatsBottomSheet
-import com.anna.healthyeats.ui.screens.ui.auth.common.boldGreenStyling
-import com.anna.healthyeats.ui.screens.ui.auth.common.normalStyling
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalContext
+import cafe.adriel.voyager.hilt.getScreenModel
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.anna.healthyeats.ui.components.loading.LoadingContent
+import com.anna.healthyeats.ui.main.voyager_screens.HealthyEatsScreen
+import com.anna.healthyeats.ui.main.voyager_screens.HealthyEatsScreenModel
+import com.anna.healthyeats.ui.screens.ui.auth.common.confirmPasswordValidationMsg
+import com.anna.healthyeats.ui.screens.ui.auth.common.emailValidationMsg
+import com.anna.healthyeats.ui.screens.ui.auth.common.passwordValidationMsg
+import com.anna.healthyeats.ui.screens.ui.auth.login.LoginScreen
+import com.anna.healthyeats.ui.screens.ui.auth.signup.state.SignUpScreenModel
+import com.anna.healthyeats.ui.screens.ui.auth.signup.ui.SignupScreenResources
+import com.anna.healthyeats.ui.screens.ui.auth.signup.ui.SignupScreenUI
+import com.anna.healthyeats.ui.theme.HealthyEatsTheme
+import com.anna.healthyeats.utils.notification.ToastService
+import com.anna.healthyeats.utils.validation.error.ConfirmPassword
+import com.anna.healthyeats.utils.validation.error.Email
+import com.anna.healthyeats.utils.validation.error.Password
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SignupScreen(
-  email: MutableState<String>,
-  password: MutableState<String>,
-  confirmPassword: MutableState<String>,
-  onClick: () -> Unit
-) {
-  val scaffoldState = rememberBottomSheetScaffoldState()
+/**
+ * The sign up screen with the sign up
+ * i) Sign up UI
+ * ii) Sign up UI state
+ * */
+class SignupScreen : HealthyEatsScreen<SignUpScreenModel>() {
+  @Composable
+  override fun Content() {
+    // Screen navigation
+    val navigator = LocalNavigator.currentOrThrow
 
-  HealthyEatsBottomSheet(
-    scaffoldState = scaffoldState,
-    sheetContent = { SignupForm(email, password, confirmPassword, onClick) }) {
-    Column {
-      Image(
-        painter = painterResource(id = R.drawable.healthy_lifestyle),
-        contentDescription = "",
-        contentScale = ContentScale.Crop,
-        modifier = Modifier
-          .fillMaxWidth()
-          .fillMaxHeight(0.45F))
+    // Screen state
+    val screenModel = getScreenModel<SignUpScreenModel>()
+    val signUpState by screenModel.state.collectAsState()
+
+    // Screen content
+    HealthyEatsTheme {
+      ScreenContentWithState(screenModel = screenModel)
     }
+
+    // Perform actions based on resultant state
+    when(signUpState){
+      is HealthyEatsScreenModel.State.Initial -> SignupScreen()
+      is HealthyEatsScreenModel.State.Loading -> LoadingContent(text = SignupScreenResources.stringResources()["sign_up_loading"]!! , isSuccess = true)
+      is HealthyEatsScreenModel.State.Result<*> -> {
+        val signUpResult = (signUpState as HealthyEatsScreenModel.State.Result<*>).result
+
+        if (signUpResult != null){
+          navigator.push(LoginScreen())
+        } else {
+          ToastService.showToast(LocalContext.current, SignupScreenResources.stringResources()["sign_up_error"]!!, true)
+        }
+      }
+    }
+
   }
-}
 
-@Composable
-private fun SignupForm(
-  email: MutableState<String>,
-  password: MutableState<String>,
-  confirmPassword: MutableState<String>,
-  onClick: () -> Unit
-){
-  Column(
-    modifier = Modifier.padding(
-      top = SignupScreenResources.dimenResources()["small_padding"]!!,
-      bottom = SignupScreenResources.dimenResources()["medium_padding"]!!,
-    ),
-    horizontalAlignment = Alignment.CenterHorizontally) {
+  @Composable
+  override fun ScreenContentWithState(screenModel: SignUpScreenModel){
+    // Email, Password & Confirm password field states
+    val email = rememberSaveable { mutableStateOf("") }
+    val password = rememberSaveable { mutableStateOf("") }
+    val confirmPassword = rememberSaveable { mutableStateOf("") }
 
-    Text(
-      text = SignupScreenResources.stringResources()["signup_title"]!!,
-      textAlign = TextAlign.Center,
-      modifier = Modifier.padding(bottom = SignupScreenResources.dimenResources()["medium_padding"]!!),
-      style = boldGreenStyling()
-    )
+    // Email, Password & Confirm password validation states
+    var emailValidation by rememberSaveable { mutableStateOf(Email.INITIAL) }
+    var passwordValidation by rememberSaveable { mutableStateOf(Password.INITIAL) }
+    var confirmPasswordValidation by rememberSaveable { mutableStateOf(ConfirmPassword.INITIAL) }
 
-    Text(
-      text = SignupScreenResources.stringResources()["signup_subtitle"]!!,
-      textAlign = TextAlign.Center,
-      modifier = Modifier.padding(bottom = SignupScreenResources.dimenResources()["large_padding"]!!),
-      style = normalStyling()
-    )
+    // Remove whitespace
+    val trimEmail = email.value.trim()
+    val trimPassword = password.value.trim()
+    val trimConfirmPassword = confirmPassword.value.trim()
 
-    HealthyEatsEmailField(
-      inputState = email,
-      placeholder = SignupScreenResources.stringResources()["email_placeholder"]!!,
-      modifier = Modifier.padding(
-        start = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        end = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        bottom = SignupScreenResources.dimenResources()["medium_padding"]!!
-      )
-    )
+    val handleButtonClick = {
+      val isValidData = screenModel.performValidations(trimEmail, trimPassword, trimConfirmPassword )
 
-    HealthyEatsPasswordField(
-      inputState = password,
-      placeholder = SignupScreenResources.stringResources()["password_placeholder"]!!,
-      modifier = Modifier.padding(
-        start = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        end = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        bottom = SignupScreenResources.dimenResources()["medium_padding"]!!
-      )
-    )
+      // Validation results
+      emailValidation = screenModel.getEmailValidationResult(trimEmail)
+      passwordValidation = screenModel.getPasswordValidationResult(trimPassword)
+      confirmPasswordValidation = screenModel.getConfPasswordValidationResult(trimPassword, trimConfirmPassword)
 
-    HealthyEatsPasswordField(
-      inputState = confirmPassword,
-      placeholder = SignupScreenResources.stringResources()["confirm_password_placeholder"]!!,
-      modifier = Modifier.padding(
-        start = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        end = SignupScreenResources.dimenResources()["screen_medium_padding"]!!
-      )
-    )
+      if(isValidData){
+        screenModel.signUpUser(trimEmail, trimPassword)
+      }
+    }
 
-    HealthyEatsButton(
-      buttonText = SignupScreenResources.stringResources()["btn_signup"]!!,
-      modifier = Modifier.padding(
-        top = SignupScreenResources.dimenResources()["medium_padding"]!!,
-        start = SignupScreenResources.dimenResources()["screen_medium_padding"]!!,
-        end = SignupScreenResources.dimenResources()["screen_small_padding"]!!
-      )
-    )
-
-    Text(
-      text = SignupScreenResources.stringResources()["login_redirect_link"]!!,
-      textAlign = TextAlign.Center,
-      textDecoration = TextDecoration.Underline,
-      modifier = Modifier
-        .padding(top = SignupScreenResources.dimenResources()["small_padding"]!!)
-        .clickable { onClick() },
-      style = normalStyling()
-    )
+    SignupScreenUI(
+      email = email,
+      password = password,
+      confirmPassword = confirmPassword,
+      isEmailError = (emailValidation != Email.INITIAL && emailValidation != Email.VALID_EMAIL),
+      isPasswordError = (passwordValidation != Password.INITIAL && passwordValidation != Password.VALID_PASSWORD),
+      isConfirmPasswordError = (confirmPasswordValidation != ConfirmPassword.INITIAL && confirmPasswordValidation != ConfirmPassword.VALID_CONFIRM_PASSWORD),
+      emailErrorMessage = emailValidationMsg(errorType = emailValidation),
+      passwordErrorMessage = passwordValidationMsg(errorType = passwordValidation),
+      confirmPasswordErrorMessage = confirmPasswordValidationMsg(errorType = confirmPasswordValidation),
+      onClick = handleButtonClick)
   }
 
 }
