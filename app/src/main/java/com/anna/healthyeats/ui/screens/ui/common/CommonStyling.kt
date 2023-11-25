@@ -1,4 +1,4 @@
-package com.anna.healthyeats.ui.screens.ui.auth.common
+package com.anna.healthyeats.ui.screens.ui.common
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
