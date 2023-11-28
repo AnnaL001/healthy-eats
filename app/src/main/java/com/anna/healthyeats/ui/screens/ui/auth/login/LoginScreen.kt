@@ -59,7 +59,7 @@ class LoginScreen : HealthyEatsScreen<LoginScreenModel>() {
         val loggedInUser = screenModel.loggedInUser
 
         when(true){
-          (loggedInUser != null && loggedInUser.isEmailVerified) -> navigator.push(UserDetailsScreen(loggedInUser))
+          (loggedInUser != null && loggedInUser.isEmailVerified) -> navigator.push(UserDetailsScreen())
           (loggedInUser != null && !loggedInUser.isEmailVerified) -> {
             ToastService.showToast(context, LoginScreenResources.stringResources()["verification_error"]!!, true)
           }
