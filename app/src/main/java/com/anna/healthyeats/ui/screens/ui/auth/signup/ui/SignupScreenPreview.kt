@@ -7,7 +7,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 import timber.log.Timber
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun SignupScreenPreview() {
   val email = remember { mutableStateOf("") }
