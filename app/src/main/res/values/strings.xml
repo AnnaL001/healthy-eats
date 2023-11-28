@@ -54,6 +54,12 @@
     <string name="title">HealthyEats</string>
     <string name="subtitle">Your healthy lifestyle partner where your healthy recipe needs are taken care of</string>
 
+    <!-- User Details screen -->
+    <string name="user_details_title">To begin, kindly provide the details below</string>
+    <string name="select_diet">Select your diet</string>
+    <string name="select_health_preference">What are your other preferences?</string>
+    <string name="select_cuisine">Any cuisine preferences ?</string>
+
     <!-- Buttons -->
     <string name="btn_login">Login</string>
     <string name="btn_signup">Sign up</string>
@@ -62,5 +68,8 @@
     <!-- Loading texts -->
     <string name="sign_up_loading">Signing you up…</string>
     <string name="login_loading">Login in progress…</string>
+
+
+    <string name="keto_diet">Keto</string>
 
 </resources>
