@@ -11,8 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import com.anna.healthyeats.ui.components.forms.button.HealthyEatsButton
-import com.anna.healthyeats.ui.screens.ui.auth.common.boldGreenTitleStyling
-import com.anna.healthyeats.ui.screens.ui.auth.common.subtitleStyling
+import com.anna.healthyeats.ui.screens.ui.common.boldGreenTitleStyling
+import com.anna.healthyeats.ui.screens.ui.common.subtitleStyling
 
 @Composable
 fun StartScreenUI(
