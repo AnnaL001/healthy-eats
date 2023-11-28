@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import cafe.adriel.voyager.navigator.Navigator
+import cafe.adriel.voyager.transitions.SlideTransition
 import com.anna.healthyeats.ui.screens.ui.start.StartScreen
 import com.anna.healthyeats.ui.theme.HealthyEatsTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,7 +17,9 @@ class MainActivity : ComponentActivity() {
     super.onCreate(savedInstanceState)
     setContent {
       HealthyEatsTheme {
-        Navigator(StartScreen())
+        Navigator(StartScreen()){ navigator ->
+          SlideTransition (navigator)
+        }
       }
     }
   }
