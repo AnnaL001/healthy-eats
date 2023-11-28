@@ -24,9 +24,10 @@ import com.anna.healthyeats.ui.components.forms.button.HealthyEatsButton
 import com.anna.healthyeats.ui.components.forms.email.HealthyEatsEmailField
 import com.anna.healthyeats.ui.components.forms.password.HealthyEatsPasswordField
 import com.anna.healthyeats.ui.components.layout.bottom_sheet.HealthyEatsBottomSheet
-import com.anna.healthyeats.ui.screens.ui.auth.common.boldGreenStyling
-import com.anna.healthyeats.ui.screens.ui.auth.common.normalStyling
+import com.anna.healthyeats.ui.screens.ui.auth.login.components.form.LoginForm
 import com.anna.healthyeats.ui.screens.ui.auth.signup.SignupScreen
+import com.anna.healthyeats.ui.screens.ui.common.boldGreenStyling
+import com.anna.healthyeats.ui.screens.ui.common.normalStyling
 
 /**
  * Login screen UI
