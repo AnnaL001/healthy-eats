@@ -1,4 +1,4 @@
-package com.anna.healthyeats.data.recipes.repository
+package com.anna.healthyeats.data.recipes.retrofit.repository
 
 import com.anna.healthyeats.model.edamam_api.RecipeSearch
 import com.anna.healthyeats.network.api.service.RecipeSearchApi
