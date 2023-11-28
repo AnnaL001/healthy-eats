@@ -20,8 +20,12 @@
     <dimen name="small_padding">8dp</dimen>
     <dimen name="small_medium_padding">12dp</dimen>
     <dimen name="medium_padding">16dp</dimen>
+    <dimen name="medium_large_padding">24dp</dimen>
     <dimen name="large_padding">32dp</dimen>
 
     <!-- Card elevation dimensions -->
     <dimen name="card_elevation">8dp</dimen>
+
+    <!-- Image dimensions -->
+    <dimen name="loading_img_size">80dp</dimen>
 </resources>
