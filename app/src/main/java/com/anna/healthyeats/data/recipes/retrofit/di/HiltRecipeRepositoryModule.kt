@@ -1,7 +1,7 @@
-package com.anna.healthyeats.data.recipes.di
+package com.anna.healthyeats.data.recipes.retrofit.di
 
-import com.anna.healthyeats.data.recipes.repository.RecipeRepository
-import com.anna.healthyeats.data.recipes.repository.RecipeRepositoryImpl
+import com.anna.healthyeats.data.recipes.retrofit.repository.RecipeRepository
+import com.anna.healthyeats.data.recipes.retrofit.repository.RecipeRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
