@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import com.anna.healthyeats.ui.components.layout.card.HealthyEatsCard
 import com.anna.healthyeats.ui.theme.HealthyEatsError
 import com.anna.healthyeats.ui.theme.HealthyEatsGreen
@@ -31,7 +30,7 @@ fun LoadingContent(
         Image(
           painter = LoadingContentResources.painterResources()["loading_img"]!!,
           contentDescription = "",
-          modifier = Modifier.size(80.dp))
+          modifier = Modifier.size(LoadingContentResources.dimenResources()["loading_img_size"]!!))
 
         LinearProgressIndicator(modifier =
         modifier

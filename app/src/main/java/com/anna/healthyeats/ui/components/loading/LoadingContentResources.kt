@@ -14,6 +14,7 @@ object LoadingContentResources {
   @Composable
   fun dimenResources(): Map<String, Dp>{
     dimenMap["medium_padding"] = dimensionResource(R.dimen.medium_padding)
+    dimenMap["loading_img_size"] = dimensionResource(id = R.dimen.loading_img_size)
     return dimenMap
   }
 
